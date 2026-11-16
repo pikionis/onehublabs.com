@@ -100,7 +100,8 @@ the PageSpeed Insights API enabled, in `.env`.
 
 ## Deploys
 
-GitHub Actions builds and publishes the site on every push to `main`, and once a day so the
+GitHub Actions builds and publishes the site on every push to `main` that changes more than the
+README or `CLAUDE.md`, and once a day so the
 PageSpeed results and the GitHub terrain stay current. The admin panel commits straight to `main`,
 so pull before working: `git pull --rebase origin main`.
 

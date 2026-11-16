@@ -5,6 +5,8 @@ name: Deploy
 on:
   push:
     branches: [main]
+    # notes for people and for Claude are not part of the site: a push that changes only them publishes nothing
+    paths-ignore: ['README.md', 'CLAUDE.md']
   schedule:
     - cron: '0 4 * * *'
   workflow_dispatch:
