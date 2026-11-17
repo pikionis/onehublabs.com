@@ -1,7 +1,7 @@
 // The logo's files, all made from the logo itself (src/data/logo.ts), so none of them falls behind it:
 //   public/favicon.svg  the symbol on the hero's dark ground, drawn with a heavier line so it reads at 16px
 //   public/logo.png     the structured-data logo (Base.astro), 512 × 512
-//   public/og.png       the share card, 1200 × 630: the master lockup, the motto, the address and the name
+//   public/og.png       the share card, 1200 × 630 (scripts/share.mjs makes it; run here so it follows the logo)
 // and, given a folder, the logo as SVG files to hand out (the master lockup, the header's horizontal one, the
 // symbol alone; each also on dark).
 //
@@ -116,17 +116,5 @@ ${style}</style></head><body>${body}</body></html>`;
     512, 512, path.join(root, 'public/logo.png'));
 }
 
-// og.png: the master lockup, the motto with its tail, the address bottom left and the name bottom right
-{
-  const lockW = 440 * (mW / W.w); // the wordmark 440 wide
-  const motto = `${site.brand.motto.en} ${site.intro.tail.en}`;
-  const name = site.person?.name?.en ?? site.name?.en ?? 'Petros Pikionis';
-  shoot(page(1200, 630,
-    `<svg viewBox="${masterBox}" style="left:${r1((1200 - lockW) / 2)}px; top:104px; width:${r1(lockW)}px">${master(C.ink, C.cobalt)}</svg>` +
-    `<p class="motto">${motto}</p><p class="corner l">onehublabs.com</p><p class="corner r">${name}</p>`,
-    `p { position: absolute; margin: 0; font-family: SG, sans-serif; }
-     .motto { left: 0; right: 0; top: 482px; text-align: center; font-size: 28px; font-weight: 500; color: ${C.ink}; letter-spacing: 0.01em; }
-     .corner { bottom: 44px; font-size: 20px; font-weight: 400; color: #5b5c58; }
-     .l { left: 56px; } .r { right: 56px; }`),
-    1200, 630, path.join(root, 'public/og.png'));
-}
+// og.png, the share card: made by scripts/share.mjs, which draws the logo too, so it is made again here
+execFileSync(process.execPath, [path.join(root, 'scripts/share.mjs')], { stdio: 'inherit' });
