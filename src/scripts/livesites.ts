@@ -4,15 +4,26 @@
  * kept to the box's size as the box changes (the stack pins and unpins it, the window resizes).
  *
  * The scroll follows the pointer (the styles decide it): on a desktop, over the box the wheel scrolls the
- * site, anywhere else the page and its cards. Phones and touch screens only look at it.
+ * site, anywhere else the page and its cards. Phones and touch screens see the site's capture instead.
  */
 import { gsap } from 'gsap';
 
 const SITE_WIDTH = 1440;
+/** Where a card's live site can be used (the pointer scrolls it); elsewhere its "Preview" button shows (Services.astro). */
+const LOOK = '(hover: hover) and (pointer: fine) and (min-width: 768px)';
 
 export function liveSite(box: HTMLElement) {
   const src = box.dataset.src;
   if (!src) return;
+  // a phone or touch screen only looks at the site, so it gets the site's capture instead: every card's site live at
+  // once (four sites and this one, each a whole page in its own frame) was more than a phone holds, and a fast scroll
+  // closed the page. "Preview" still opens the live site full screen, one at a time
+  if (!window.matchMedia(LOOK).matches) {
+    if (!box.dataset.cover) return;
+    const shot = Object.assign(document.createElement('img'), { src: box.dataset.cover, alt: '', loading: 'lazy', decoding: 'async' });
+    box.insertBefore(shot, box.querySelector('.live-preview'));
+    return;
+  }
   let frame: HTMLIFrameElement | null = null;
 
   // the site at 1440px, scaled to the box's width; it is as tall as the box at that scale

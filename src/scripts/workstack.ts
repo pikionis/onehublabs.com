@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { whenStill } from './still';
 
 /*
  * "What I build" on the home page: the service sheets stack over a held screen, and inside each
@@ -68,15 +69,17 @@ export function workStack(root: HTMLElement) {
     phoneWidth = window.innerWidth;
     phone.add(PHONE, () => holdPhone(root, pin, sheets));
   };
-  // (the refresh in a task of its own: together they held a phone too long)
-  (document.fonts?.ready ?? Promise.resolve()).then(() => { setupPhone(); setTimeout(() => ScrollTrigger.refresh(), 0); });
+  // (the refresh in a task of its own: together they held a phone too long; and only once the page is still, since
+  // a refresh in the middle of a scroll stopped it or sent it back: still.ts)
+  const refresh = () => ScrollTrigger.refresh();
+  (document.fonts?.ready ?? Promise.resolve()).then(() => { setupPhone(); whenStill(refresh); });
 
   let wait = 0;
   window.addEventListener('resize', () => {
     clearTimeout(wait);
     wait = window.setTimeout(() => {
       recheck();
-      if (window.innerWidth !== phoneWidth) { setupPhone(); ScrollTrigger.refresh(); }
+      if (window.innerWidth !== phoneWidth) { setupPhone(); whenStill(refresh); }
     }, 200);
   });
 
