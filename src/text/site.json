@@ -30,11 +30,12 @@
       "el": "Ο Πέτρος Πικιώνης σχεδιάζει, φτιάχνει και φροντίζει ιστοσελίδες, web εφαρμογές και ηλεκτρονικά καταστήματα, μαζί με το marketing, τη διαφήμιση και την αναζήτηση με AI.",
       "de": "Massgeschneiderte Websites, Webanwendungen, E-Commerce, KI-Suche, Marketing und Werbung: Konzeption, Entwicklung und Betrieb aus einer Hand, von Petros Pikionis."
     },
-    "image": "/og.png",
+    "image": "/og.png?v=2",
+    "video": "/og.mp4",
     "imageAlt": {
-      "en": "The onehub logo: three loops that meet in one point. Design. Build. Automate. Scale fast.",
-      "el": "Το λογότυπο του onehub: τρεις βρόχοι που ενώνονται σε ένα σημείο. Design. Build. Automate. Scale fast.",
-      "de": "Das onehub-Logo: drei Schleifen, die in einem Punkt zusammenlaufen. Design. Build. Automate. Scale fast."
+      "en": "Petros Pikionis, AI Software Engineer, beside the onehub motto: Design. Build. Automate. Scale fast.",
+      "el": "Ο Πέτρος Πικιώνης, AI Software Engineer, δίπλα στο μότο του onehub: Design. Build. Automate. Scale fast.",
+      "de": "Petros Pikionis, AI Software Engineer, neben dem Motto von onehub: Design. Build. Automate. Scale fast."
     }
   },
   "brand": {
