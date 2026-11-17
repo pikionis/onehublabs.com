@@ -85,7 +85,7 @@ const check = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" strok
                                slow connection the browser's own lazy loading fetched every site with the page, and an
                                empty frame in the page made it lay the page out while still reading it); its title card
                                shows until the site paints over it. Without script, the frame is the <noscript> one -->
-                          <div class="site-live" data-live data-src={live} data-title={`${p.data.title} ${ui.live.site}`}>
+                          <div class="site-live" data-live data-src={live} data-cover={p.data.cover} data-title={`${p.data.title} ${ui.live.site}`}>
                             <span class="pfallback" aria-hidden="true" data-t={p.data.title}></span>
                             <noscript><iframe src={live} title={`${p.data.title} ${ui.live.site}`} loading="lazy" tabindex="-1" credentialless
                               sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe></noscript>
@@ -270,6 +270,8 @@ const check = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" strok
      the rest of the card */
   .site-live { position: absolute; inset: 0; overflow: hidden; }
   .site-live :global(iframe) { position: absolute; top: 0; left: 0; width: 1440px; height: 100%; border: 0; transform-origin: 0 0; pointer-events: none; }
+  /* a phone shows the site's capture instead of the site (liveSite) */
+  .site-live :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
   @media (hover: hover) and (pointer: fine) and (min-width: 768px) {
     /* above the card's own link, so the pointer here is on the site */
     .site-live { z-index: 2; }

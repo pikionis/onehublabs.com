@@ -18,6 +18,7 @@ import { koanChapter } from './koan';
 import { deindealChapter } from './deindeal';
 import { INTERLUDES } from './interludes';
 import { readTime } from './chapter';
+import { whenStill } from './still';
 
 /** the scenes told as chapters of their own, in beats */
 const CHAPTERS: Record<string, (step: HTMLElement, still: boolean) => { points: () => number[]; hold: (k: number) => number; kill: () => void } | null> = {
@@ -566,8 +567,12 @@ export function myStory(root: HTMLElement) {
           duration: { min: 0.25, max: 0.6 }, delay: 0.04, ease: 'power2.inOut', inertia: false,
         },
       });
-      ScrollTrigger.refresh();
-      if (!stopped) untell = tell(root, snap, points, holds);
+      // (once the page is still: a refresh in the middle of a fling stopped it, and the snap right after it caught it)
+      whenStill(() => {
+        if (stopped || !snap) return;
+        ScrollTrigger.refresh();
+        untell = tell(root, snap, points, holds);
+      });
     })();
     return () => {
       stopped = true;

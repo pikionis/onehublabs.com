@@ -40,6 +40,8 @@ let spring: ReturnType<typeof springEasing> | null = null;
  */
 export function letterCascade(el: HTMLElement, trigger: HTMLElement = el) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // a hover effect: a touch screen never plays it, and a phone was holding a blurred echo for every letter
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
   spring ??= springEasing();
   // each letter stands alone in its own cell, where CSS would give a Greek ή its accent as a word of its own: capitals
   // are made here, the way the language writes them
