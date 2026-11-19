@@ -1,8 +1,21 @@
-# onehublabs.com
+<p align="center">
+  <a href="https://onehublabs.com"><img src=".github/readme/banner.svg" alt="onehub. Design. Build. Automate. Scale fast. onehublabs.com" width="100%"></a>
+</p>
 
-**The personal site of Petros Pikionis: services, projects, story and blog, in English, Greek and
-German.** A static Astro site with hand-built motion, a content panel that needs no server, and
-live PageSpeed results for every project it shows.
+<h1 align="center">onehublabs.com</h1>
+
+<p align="center"><b>The personal site of Petros Pikionis: services, projects, story and blog, in English, Greek and German.</b></p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Astro-5-2D49AD?logo=astro&logoColor=white" alt="Astro 5">
+  <img src="https://img.shields.io/badge/TypeScript-2D49AD?logo=typescript&logoColor=white" alt="TypeScript">
+  <img src="https://img.shields.io/badge/GSAP-ScrollTrigger-2D49AD?logo=greensock&logoColor=white" alt="GSAP with ScrollTrigger">
+  <img src="https://img.shields.io/badge/GitHub_Pages-GitHub_Actions-0A0B0A?logo=githubpages&logoColor=white" alt="GitHub Pages, deployed by GitHub Actions">
+  <img src="https://img.shields.io/badge/languages-EN_%C2%B7_EL_%C2%B7_DE-4D7CFF" alt="English, Greek, German">
+</p>
+
+A static Astro site with hand-built motion, a content panel that needs no server, and live
+PageSpeed results for every project it shows.
 
 Live at [onehublabs.com](https://onehublabs.com).
 
@@ -110,3 +123,8 @@ so pull before working: `git pull --rebase origin main`.
 Built by **Petros Pikionis**, AI Product Engineer.
 [onehublabs.com](https://onehublabs.com) ·
 [LinkedIn](https://www.linkedin.com/in/petros-platon-pikionis-4045a782/)
+
+<p align="center">
+  <a href="https://onehublabs.com"><picture><source media="(prefers-color-scheme: dark)" srcset=".github/readme/symbol-on-dark.svg"><img src=".github/readme/symbol.svg" width="64" alt="onehub"></picture></a><br>
+  <sub>onehublabs.com</sub>
+</p>
